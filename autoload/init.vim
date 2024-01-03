@@ -3,6 +3,12 @@
 " Called at the 'Filetype,BufEnter,BufNew,BufReadPre' events
 "  (see ../plugin/autocmds.vim)
 function! init#declareBufferVariables() abort
+	if !exists('b:norm_highlighting')
+		let b:norm_highlighting = 0
+	endif
+	if !exists('b:norm_option')
+		let b:norm_option = ''
+	endif
 	if !exists('b:placed_signs_ids')
 		let b:placed_signs_ids = []
 	endif

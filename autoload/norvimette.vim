@@ -1,20 +1,36 @@
 " Function to enable the norm errors highlighting on the current buffer
+" The optional argument for the norminette shell command is stored inside the
+"  'b:norm_option' variablle
+" The function for norm error highlighting refreshing is called once
+"
+" Called by the ':Norminette [option]' command (see ../plugin/commands.vim)
+function! norvimette#highlightEnable(...) abort
+	let b:norm_highlighting = 1
+	if a:0 == 0
+		let b:norm_option = ''
+	else
+		let b:norm_option = a:1
+	endif
+	call norvimette#highlightRefresh()
+endfunction
+
+" Function to refresh the norm errors highlighting on the current buffer
 " The norminette shell command is run and its result is parsed to place all
 "  the error signs and store their associated errors' data, if need be
 " An error is echoed instead if the file is invalid for the norm (not a C
 "  source/header file), a '<filepath> OK' message is echoed if the file is
 "  normed
+" The error popup is refreshed to the new highlight
 "
-" Called by the ':Norminette [option]' command (see ../plugin/commands.vim)
-function! norvimette#highlightEnable(...) abort
-	let l:filename = expand('%')
-	call cleanup#unplaceSigns()
-	let l:sign_id = 1
-	if a:0 == 0
-		let l:norm_res = s:RunNorminette(l:filename, '')
-	else
-		let l:norm_res = s:RunNorminette(l:filename, a:1)
+" Called at the 'TextChanged' event (see ../plugin/autocmds.vim)
+function! norvimette#highlightRefresh() abort
+	if b:norm_highlighting == 0
+		return
 	endif
+	call cleanup#unplaceSigns()
+	let l:filename = expand('%')
+	let l:norm_res = s:RunNorminette(l:filename, b:norm_option)
+	let l:sign_id = 1
 	for l:line in l:norm_res
 		let l:err_line = matchstr(l:line, '\m\c^Error.*line:\s\+\zs\d\+')
 		if l:err_line == ''
@@ -29,6 +45,7 @@ function! norvimette#highlightEnable(...) abort
 			\ ])
 		let l:sign_id += 1
 	endfor
+	call error_popup#updateErrorPopup()
 endfunction
 
 " Function to disable the norm errors highlighting on the current buffer
@@ -37,8 +54,12 @@ endfunction
 "
 " Called by the ':NoNorminette' command (see ../plugin/commands.vim)
 function! norvimette#highlightDisable() abort
+	if b:norm_highllighting == 0
+		return
+	endif
 	call cleanup#unplaceSigns()
 	call popup_hide(b:error_popup_id)
+	let b:norm_highlighting = 0
 endfunction
 
 " Function to run the norminette shell command and check its result
