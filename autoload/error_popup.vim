@@ -3,6 +3,10 @@
 "
 " Called at the 'CursorMoved,CursorMovedI' events (see ../plugin/autocmds.vim)
 function! error_popup#updateErrorPopup() abort
+	if b:placed_signs_ids == []
+		call popup_hide(b:error_popup_id)
+		return
+	endif
 	for l:sign_id in b:placed_signs_ids
 		let l:sign_data = get(b:placed_signs_data, l:sign_id, ['-1', '-1', 'ERR'])
 		if line('.') != l:sign_data[0]

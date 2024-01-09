@@ -5,7 +5,7 @@
 "
 " Called by the ':Norminette [option]' command (see ../plugin/commands.vim)
 function! viminette#highlightEnable(...) abort
-	let b:norm_highlighting = 1
+	let b:norm_status = 1
 	if a:0 == 0
 		let b:norm_option = ''
 	else
@@ -24,7 +24,7 @@ endfunction
 "
 " Called at the 'TextChanged' event (see ../plugin/autocmds.vim)
 function! viminette#highlightRefresh() abort
-	if b:norm_highlighting == 0
+	if b:norm_status == 0
 		return
 	endif
 	call cleanup#unplaceSigns()
@@ -54,12 +54,20 @@ endfunction
 "
 " Called by the ':NoNorminette' command (see ../plugin/commands.vim)
 function! viminette#highlightDisable() abort
-	if b:norm_highllighting == 0
+	if b:norm_status == 0
 		return
 	endif
 	call cleanup#unplaceSigns()
 	call popup_hide(b:error_popup_id)
-	let b:norm_highlighting = 0
+	let b:norm_status = 0
+endfunction
+
+" Function to get the current buffer norm status.
+" 0 = norm highlighting is disabled
+" 1 = norm highlighting is enabled with norm errors
+" 2 = norm highlighting is enabled without norm errors
+function! viminette#getNormStatus() abort
+	return b:norm_status
 endfunction
 
 " Function to run the norminette shell command and check its result
@@ -74,17 +82,23 @@ endfunction
 function! s:RunNorminette(filename, options) abort
 	let l:norm_res = systemlist('norminette '.a:options.' '.a:filename)
 	if v:shell_error == 0 && stridx(l:norm_res[0], 'Error') == -1
+		if b:norm_status == 1
+			return []
+		endif
 		echohl OkMsg
 		echomsg l:norm_res[0]
 		echohl None
+		let b:norm_status = 1
 		return []
 	endif
 	if len(l:norm_res) == 1
 		echohl WarningMsg
 		echomsg l:norm_res[0]
 		echohl None
+		let b:norm_status = 0
 		return []
 	endif
+	let b:norm_status = 2
 	return l:norm_res
 endfunction
 
