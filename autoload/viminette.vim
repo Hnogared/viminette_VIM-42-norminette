@@ -4,14 +4,14 @@
 " The function for norm error highlighting refreshing is called once
 "
 " Called by the ':Norminette [option]' command (see ../plugin/commands.vim)
-function! norvimette#highlightEnable(...) abort
+function! viminette#highlightEnable(...) abort
 	let b:norm_highlighting = 1
 	if a:0 == 0
 		let b:norm_option = ''
 	else
 		let b:norm_option = a:1
 	endif
-	call norvimette#highlightRefresh()
+	call viminette#highlightRefresh()
 endfunction
 
 " Function to refresh the norm errors highlighting on the current buffer
@@ -23,7 +23,7 @@ endfunction
 " The error popup is refreshed to the new highlight
 "
 " Called at the 'TextChanged' event (see ../plugin/autocmds.vim)
-function! norvimette#highlightRefresh() abort
+function! viminette#highlightRefresh() abort
 	if b:norm_highlighting == 0
 		return
 	endif
@@ -53,7 +53,7 @@ endfunction
 "  visible
 "
 " Called by the ':NoNorminette' command (see ../plugin/commands.vim)
-function! norvimette#highlightDisable() abort
+function! viminette#highlightDisable() abort
 	if b:norm_highllighting == 0
 		return
 	endif

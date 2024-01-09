@@ -7,11 +7,11 @@
 "  error
 "
 " One optional argument allowing to run ':Norminette -RCheckDefine'
-command -nargs=? Norminette call norvimette#highlightEnable(<f-args>)
+command -nargs=? Norminette call viminette#highlightEnable(<f-args>)
 
 " Unplaces all the placed norm error signs and disables the norm error popup
 "  on the current buffer
-command -nargs=0 NoNorminette call norvimette#highlightDisable()
+command -nargs=0 NoNorminette call viminette#highlightDisable()
 
 
 " SIGNS JUMPS "
