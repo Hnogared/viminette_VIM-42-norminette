@@ -31,26 +31,40 @@ You are now good to go 👍
 # Usage
 
 ### Enabling norm highlighting
-```:Norminette```
+```
+:Norminette
+```
 Turn on norm highlighting if the shell norminette command call was successfull.
 
 ### Disabling norm highlighting
-```:NoNorminette```
+```
+:NoNorminette
+```
 Turn off norm highlighting if it was initially turned on.
 
 ### Jumping between norm error lines
-⚠️ These commands only do something if norm errors are present in the file.<br><br>
-```:NextSign```
+⚠️ These commands only do something if norm errors are present in the file.
+```
+:NextSign
+```
 Jump to the closest error line in the file after the cursor line. Jump to the first one if none is present after the cursor.
 
-```:PrevSign```
+---
+```
+:PrevSign
+```
 Jump to the closest error line before the cursor line. Jump to the last one if none is present before the cursor.
 
-```:NextSignCycle```
+---
+```
+:NextSignCycle
+```
 Cycle through the error lines from top to bottom. Jump back to the first one from the last one.
 
-```:PrevSignCycle```
+---
+```
+:PrevSignCycle
+```
 Cycle through the error lines from bottom to top. Jump back to the last one from the first one.
-
 
 [42_official_norminette]:https://github.com/42School/norminette
