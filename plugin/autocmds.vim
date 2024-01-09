@@ -9,7 +9,7 @@ augroup norvimette
 	autocmd Filetype,BufEnter,BufNew,BufReadPre * call init#declareBufferVariables()
 
 	" Refresh the norm error highlighting after each save
-	autocmd BufWritePre,FileWritePre,FileAppendPre,FilterWritePre * call norvimette#highlightRefresh()
+	autocmd BufWritePost * call norvimette#highlightRefresh()
 
 	" Check if the cursor moved on a norm error line to display the error popup
 	autocmd CursorMoved,CursorMovedI * call error_popup#updateErrorPopup()
