@@ -1,6 +1,6 @@
 # Viminette - VIM builtin 42 norminette
 A vim plugin for builtin 42 norm error highlighting.<br>
-No need to switch away from VIM to check your file norm !
+No need to switch away from VIM to check your file norm anymore !
 
 ![viminette_screenshot](./srcs/viminette_screensh.png)
 
@@ -49,7 +49,7 @@ Turn off norm highlighting if it was initially turned on.
 
 ### Jumping between norm error lines
 > [!NOTE]
-> These commands only do something if norm errors are present in the file.
+> These commands only do something if norm error lines are currently displayed in the file.
 
 ```
 :NextSign
@@ -121,7 +121,7 @@ set statusline=%!MyStatusLine()
 ```
  
 ![norm status line](./srcs/norm_status_line.gif)
-<sup>What an implementation from above could look like on a VIM status line</sup>
+<sup>What an implementation from above could look like on a VIM status line (the colored rectangle shows the norm status)</sup>
 
 # Special thanks
 
