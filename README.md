@@ -8,11 +8,11 @@ No need to switch away from VIM to check your file norm anymore !
 
 ### Norminette
 The plugin runs the 42 norminette executable installed on your system.<br>
-If you don't have it installed yet, get it at [42_official_norminette], else it just won't work.
+If you don't have it installed yet, get it at [42 official norminette], else it just won't work.
 
 ### Plugins manager
 You will also need a VIM plugin manager.<br>
-Get yours at https://github.com/junegunn/vim-plug, and follow the instructions.
+I personnally use [vim-plug], you can install it following their instructions.
 
 ### Viminette plugin
 Clone the viminette repository in your file system...
@@ -40,6 +40,12 @@ You are now good to go ! :+1:
 ```
 Turn on norm highlighting if the shell norminette command call was successfull.<br>
 The highlighting now refreshes after each file save (VIM's `BufWritePos` event) until turned off or an error occurs.
+
+---
+```
+:Norminette -RCheckDefine
+```
+Turn on norm highlighting with the -RCheckDefine flag.<br>
 
 ### Disabling norm highlighting
 ```
@@ -128,4 +134,5 @@ set statusline=%!MyStatusLine()
 
 Thank you [Leizar06001](https://github.com/Leizar06001) for the name idea. Go check out their cool projects !
 
-[42_official_norminette]:https://github.com/42School/norminette
+[42 official norminette]:https://github.com/42School/norminette
+[vim-plug]:https://github.com/junegunn/vim-plug
