@@ -119,8 +119,12 @@ endfunction
 set statusline=%!MyStatusLine()
 [...]
 ```
-
+ 
 ![norm status line](./srcs/norm_status_line.gif)
 <sup>What an implementation from above could look like on a VIM status line</sup>
+
+# Special thanks
+
+Thank you [Leizar06001](https://github.com/Leizar06001) for the name idea. Go check out their cool projects !
 
 [42_official_norminette]:https://github.com/42School/norminette
