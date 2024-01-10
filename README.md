@@ -1,23 +1,25 @@
-# Viminette - VIM builtin 42 norminette
+# Viminette - VIM builtin 42 norminette ✅❎
 A vim plugin for builtin 42 norm error highlighting.<br>
-No need to switch away from VIM to check your file norm !
+No need to switch away from VIM to check your file norm anymore !
+
+![viminette_screenshot](./srcs/viminette_screensh.png)
 
 # Installation
 
 ### Norminette
 The plugin runs the 42 norminette executable installed on your system.<br>
-If you don't have it installed yet, get it at [42_official_norminette], else it just won't work.
+If you don't have it installed yet, get it at [42 official norminette], else it just won't work.
 
 ### Plugins manager
 You will also need a VIM plugin manager.<br>
-Get yours at https://github.com/junegunn/vim-plug, and follow the instructions.
+I personnally use [vim-plug], you can install it following their instructions.
 
 ### Viminette plugin
 Clone the viminette repository in your file system...
 ```
 git clone git@github.com:Hnogared/viminette_VIM-42-norminette.git
 ```
-...and plug it in your *.vimrc* file
+...and plug it in your *.vimrc* file in your home repository (create it if needed)
 ```vim
 [...]
 call plug#begin()
@@ -28,7 +30,7 @@ call plug#end()
 [...]
 ```
 
-You are now good to go :+1:
+You are now good to go ! :+1:
 
 # Usage
 
@@ -37,17 +39,24 @@ You are now good to go :+1:
 :Norminette
 ```
 Turn on norm highlighting if the shell norminette command call was successfull.<br>
-Once turned on, the highlighting refreshes after each file save (VIM's `BufWritePos` event) until turned off or an error occurs.
+The highlighting now refreshes after each file save (VIM's `BufWritePos` event) until turned off or an error occurs.
+
+---
+```
+:Norminette -RCheckDefine
+```
+Turn on norm highlighting with the -RCheckDefine flag.<br>
 
 ### Disabling norm highlighting
 ```
 :NoNorminette
 ```
-Turn off norm highlighting if it was initially turned on.
+Turn off norm highlighting if it was initially turned on.<br>
+The highlighting is hidden and doesn't refresh anymore after each file save until turned on again.
 
 ### Jumping between norm error lines
 > [!NOTE]
-> These commands only do something if norm errors are present in the file.
+> These commands only do something if norm error lines are currently displayed in the file.
 
 ```
 :NextSign
@@ -117,8 +126,13 @@ endfunction
 set statusline=%!MyStatusLine()
 [...]
 ```
-
+ 
 ![norm status line](./srcs/norm_status_line.gif)
-<sup>What an implementation from above could look like on a VIM status line</sup>
+<sup>What an implementation from above could look like on a VIM status line (the colored rectangle shows the norm status)</sup>
 
-[42_official_norminette]:https://github.com/42School/norminette
+# Special thanks
+
+Thank you [Leizar06001](https://github.com/Leizar06001) for the name idea. Go check out their cool projects !
+
+[42 official norminette]:https://github.com/42School/norminette
+[vim-plug]:https://github.com/junegunn/vim-plug
