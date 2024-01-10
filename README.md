@@ -18,15 +18,17 @@ Clone the viminette repository in your file system...
 git clone git@github.com:Hnogared/viminette_VIM-42-norminette.git
 ```
 ...and plug it in your .vimrc file
-```
+```vim
+[...]
 call plug#begin()
 
 Plug '<path_to_viminette_directory>'
 
 call plug#end()
+[...]
 ```
 
-You are now good to go 👍
+You are now good to go :+1:
 
 # Usage
 
@@ -34,7 +36,8 @@ You are now good to go 👍
 ```
 :Norminette
 ```
-Turn on norm highlighting if the shell norminette command call was successfull.
+Turn on norm highlighting if the shell norminette command call was successfull.<br>
+Once turned on, the highlighting refreshes after each file save (VIM's `BufWritePos` event) until turned off or an error occurs.
 
 ### Disabling norm highlighting
 ```
@@ -43,7 +46,9 @@ Turn on norm highlighting if the shell norminette command call was successfull.
 Turn off norm highlighting if it was initially turned on.
 
 ### Jumping between norm error lines
-⚠️ These commands only do something if norm errors are present in the file.
+> [!NOTE]
+> These commands only do something if norm errors are present in the file.
+
 ```
 :NextSign
 ```
@@ -66,5 +71,28 @@ Cycle through the error lines from top to bottom. Jump back to the first one fro
 :PrevSignCycle
 ```
 Cycle through the error lines from bottom to top. Jump back to the last one from the first one.
+
+# Status line
+The plugin's status can be displayed on the status bar.<br>
+The `viminette#getNormStatus()` function call returns the status of the norm highlighting.<br>
+
+- 0 = norm highlighting is turned OFF
+- 1 = norm highlighting is turned ON and there are no norm errors in the file
+- 2 = norm highlighting is turned ON and there are norm errors in the file
+
+This status can be used to update VIM's status line depending on the norm status on your .vimrc file :
+```vim
+[...]
+hi NormOff ctermbg=234 guibg=#616161
+hi NormOn ctermbg=40 guibg=#00FF00
+hi NormError ctermbg=196 guibg=#FF0000
+
+set statusline =
+set statusline += '%{%viminette#getNormStatus()==0?"%#NormOff# ":""%}'
+set statusline += '%{%viminette#getNormStatus()==1?"%#NormOn# ":""%}'
+set statusline += '%{%viminette#getNormStatus()==2?"%#NormError# ":""%}'
+[...]
+```
+<sup>Short example on how to implement different colors depending on the norm status</sup>
 
 [42_official_norminette]:https://github.com/42School/norminette
