@@ -1,4 +1,4 @@
-# Viminette - VIM builtin 42 norminette
+# Viminette - VIM builtin 42 norminette ✅❎
 A vim plugin for builtin 42 norm error highlighting.<br>
 No need to switch away from VIM to check your file norm anymore !
 
@@ -19,7 +19,7 @@ Clone the viminette repository in your file system...
 ```
 git clone git@github.com:Hnogared/viminette_VIM-42-norminette.git
 ```
-...and plug it in your *.vimrc* file
+...and plug it in your *.vimrc* file in your home repository (create it if needed)
 ```vim
 [...]
 call plug#begin()
@@ -30,7 +30,7 @@ call plug#end()
 [...]
 ```
 
-You are now good to go :+1:
+You are now good to go ! :+1:
 
 # Usage
 
