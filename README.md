@@ -118,4 +118,6 @@ set statusline=%!MyStatusLine()
 [...]
 ```
 
+![norm status line](./srcs/norm_status_line.gif)
+
 [42_official_norminette]:https://github.com/42School/norminette
