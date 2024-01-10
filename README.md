@@ -2,6 +2,8 @@
 A vim plugin for builtin 42 norm error highlighting.<br>
 No need to switch away from VIM to check your file norm !
 
+![viminette_screenshot](./srcs/viminette_screensh.png)
+
 # Installation
 
 ### Norminette
