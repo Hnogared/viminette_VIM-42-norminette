@@ -12,7 +12,7 @@ augroup norvimette
 	autocmd BufWritePost * call viminette#highlightRefresh()
 
 	" Check if the cursor moved on a norm error line to display the error popup
-	autocmd CursorMoved,CursorMovedI * call error_popup#updateErrorPopup()
+	autocmd CursorMoved,CursorMovedI * call error_popup#update()
 
 	" Hide a buffer's error popup if it is not shown on a window anymore
 	autocmd BufWinLeave * call popup_hide(b:error_popup_id) 

@@ -14,6 +14,14 @@ command -nargs=? Norminette call viminette#highlightEnable(<f-args>)
 command -nargs=0 NoNorminette call viminette#highlightDisable()
 
 
+" NORM ERROR MENU "
+
+" Open a popup menu asking the user to which error line they want to jump to
+" The popup won't show up if norm highlighting is disabled or the file doesn't
+"  contain any norm errors
+command -nargs=0 NormErrorMenu call norm_error_menu#display()
+
+
 " SIGNS JUMPS "
 
 " Jump to the closest error sign placed before the cursor line

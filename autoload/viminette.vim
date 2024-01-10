@@ -45,7 +45,7 @@ function! viminette#highlightRefresh() abort
 			\ ])
 		let l:sign_id += 1
 	endfor
-	call error_popup#updateErrorPopup()
+	call error_popup#update()
 endfunction
 
 " Function to disable the norm errors highlighting on the current buffer

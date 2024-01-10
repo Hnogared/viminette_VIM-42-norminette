@@ -23,11 +23,11 @@ function! init#declareBufferVariables() abort
 	endif
 	if !exists('b:error_popup_id')
 		let b:error_popup_id = popup_create("EMPTY", #{
-			\ pos: 'botleft',
-			\ highlight: 'NormErrorPopup',
-			\ padding: [0, 1, 0, 1],
-			\ wrap: 'FALSE',
-			\ })
+				\ pos: 'botleft',
+				\ highlight: 'NormErrorPopup',
+				\ padding: [0, 1, 0, 1],
+				\ wrap: 'FALSE',
+				\ })
 		call popup_hide(b:error_popup_id)
 	endif
 endfunction

@@ -26,7 +26,7 @@ function! sign_jump#prevSignJump() abort
 		echomsg 'No previous sign, jumping to the last one'
 		echohl None
 	endif
-	execute 'sign jump '.l:closest_sign_id.' group='.g:sign_group_name
+	call sign_jump(l:closest_sign_id, g:sign_group_name, bufname())
 endfunction
 
 " Function to jump to the closest error sign placed after the cursor line
@@ -57,7 +57,7 @@ function! sign_jump#nextSignJump() abort
 		echomsg 'No following sign, jumping to the first one'
 		echohl None
 	endif
-	execute 'sign jump '.l:closest_sign_id.' group='.g:sign_group_name
+	call sign_jump(l:closest_sign_id, g:sign_group_name, bufname())
 endfunction
 
 " Function to jump to the sign id before the one inside 'b:curr_cycle_jump_id'
@@ -75,7 +75,7 @@ function! sign_jump#prevSignCycleJump() abort
 		echomsg 'No previous sign, jumping to the last one'
 		echohl None
 	endif
-	execute 'sign jump '.b:curr_cycle_jump_id.' group='.g:sign_group_name
+	call sign_jump(b:curr_cycle_jump_id, g:sign_group_name, bufname())
 endfunction
 
 " Function to jump to the sign id after the one inside 'b:curr_cycle_jump_id'
@@ -94,5 +94,5 @@ function! sign_jump#nextSignCycleJump() abort
 		echomsg 'No following sign, jumping to the first one'
 		echohl None
 	endif
-	execute 'sign jump '.b:curr_cycle_jump_id.' group='.g:sign_group_name
+	call sign_jump(b:curr_cycle_jump_id, g:sign_group_name, bufname())
 endfunction
