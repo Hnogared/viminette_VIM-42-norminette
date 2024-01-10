@@ -17,7 +17,7 @@ Clone the viminette repository in your file system...
 ```
 git clone git@github.com:Hnogared/viminette_VIM-42-norminette.git
 ```
-...and plug it in your .vimrc file
+...and plug it in your *.vimrc* file
 ```vim
 [...]
 call plug#begin()
@@ -80,7 +80,7 @@ The `viminette#getNormStatus()` function call returns the status of the norm hig
 - 1 = norm highlighting is turned ON and there are no norm errors in the file
 - 2 = norm highlighting is turned ON and there are norm errors in the file
 
-This status can be used to update VIM's status line depending on the norm status on your `.vimrc` file :
+This status can be used to update VIM's status line depending on the norm status on your *.vimrc* file :
 ```vim
 " Example on how to implement different colored indicators in the status line depending on the norm status
 [...]
