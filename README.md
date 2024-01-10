@@ -39,13 +39,14 @@ You are now good to go ! :+1:
 :Norminette
 ```
 Turn on norm highlighting if the shell norminette command call was successfull.<br>
-Once turned on, the highlighting refreshes after each file save (VIM's `BufWritePos` event) until turned off or an error occurs.
+The highlighting now refreshes after each file save (VIM's `BufWritePos` event) until turned off or an error occurs.
 
 ### Disabling norm highlighting
 ```
 :NoNorminette
 ```
-Turn off norm highlighting if it was initially turned on.
+Turn off norm highlighting if it was initially turned on.<br>
+The highlighting is hidden and doesn't refresh anymore after each file save until turned on again.
 
 ### Jumping between norm error lines
 > [!NOTE]
