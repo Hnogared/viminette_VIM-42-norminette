@@ -17,7 +17,7 @@ Clone the viminette repository in your file system...
 ```
 git clone git@github.com:Hnogared/viminette_VIM-42-norminette.git
 ```
-...and plug it in your .vimrc file
+...and plug it in your *.vimrc* file
 ```vim
 [...]
 call plug#begin()
@@ -80,19 +80,42 @@ The `viminette#getNormStatus()` function call returns the status of the norm hig
 - 1 = norm highlighting is turned ON and there are no norm errors in the file
 - 2 = norm highlighting is turned ON and there are norm errors in the file
 
-This status can be used to update VIM's status line depending on the norm status on your .vimrc file :
+This status can be used to update VIM's status line depending on the norm status on your *.vimrc* file :
 ```vim
+" Example on how to implement different colored indicators in the status line depending on the norm status
 [...]
 hi NormOff ctermbg=234 guibg=#616161
 hi NormOn ctermbg=40 guibg=#00FF00
 hi NormError ctermbg=196 guibg=#FF0000
 
-set statusline =
-set statusline += '%{%viminette#getNormStatus()==0?"%#NormOff# ":""%}'
-set statusline += '%{%viminette#getNormStatus()==1?"%#NormOn# ":""%}'
-set statusline += '%{%viminette#getNormStatus()==2?"%#NormError# ":""%}'
+set statusline = ...
+set statusline += %{%viminette#getNormStatus()==0?'%#NormOff# ':''%}
+set statusline += %{%viminette#getNormStatus()==1?'%#NormOn# ':''%}
+set statusline += %{%viminette#getNormStatus()==2?'%#NormError# ':''%}
+set statusline += ...
 [...]
 ```
-<sup>Short example on how to implement different colors depending on the norm status</sup>
+
+```vim
+" Example on how to implement different colored indicators in the status line depending on the norm status
+" with a function
+" This won't work on older versions
+[...]
+hi NormOff ctermbg=234 guibg=#616161
+hi NormOn ctermbg=40 guibg=#00FF00
+hi NormError ctermbg=196 guibg=#FF0000
+
+function! MyStatusLine() abort
+  let res = ...
+  let res .= '%{%viminette#getNormStatus()==0?"%#NormOff# ":""%}'
+  let res .= '%{%viminette#getNormStatus()==1?"%#NormOn# ":""%}'
+  let res .= '%{%viminette#getNormStatus()==2?"%#NormError# ":""%}'
+  let res .= ...
+  return res
+endfunction
+
+set statusline=%!MyStatusLine()
+[...]
+```
 
 [42_official_norminette]:https://github.com/42School/norminette
