@@ -4,6 +4,7 @@ No need to switch away from VIM to check your file norm anymore !
 
 ![viminette_screenshot](./srcs/viminette_screensh.png)
 
+
 # Installation
 
 ### Norminette
@@ -32,7 +33,23 @@ call plug#end()
 
 You are now good to go ! :+1:
 
+
 # Usage
+
+## 1. Key maps
+
+### Enabling/disabling norm highlighting
+`<CTRL-m>` switch ON/OFF norm highlighting
+
+### Jumping between norm error lines
+`<CTRL-n>` jump to the closest norm error line after the cursor line.
+
+`<CTRL-b>` jump to the closest norm error line before the cursor line.
+
+### Opening the error lines popup menu
+`<CTRL-k>` open a popup menu at the center of the window for the user to select an error line to jump to.
+
+## 2. Commands
 
 ### Enabling norm highlighting
 ```
@@ -54,8 +71,17 @@ Turn on norm highlighting with the -RCheckDefine flag.<br>
 Turn off norm highlighting if it was initially turned on.<br>
 The highlighting is hidden and doesn't refresh anymore after each file save until turned on again.
 
+### Opening the error lines popup menu
+> [!IMPORTANT]
+> This command only does something if norm error lines are currently displayed in the file.
+
+```
+:NormErrorMenu
+```
+Open a popup menu at the center of the window for the user to select an error line to jump to.
+
 ### Jumping between norm error lines
-> [!NOTE]
+> [!IMPORTANT]
 > These commands only do something if norm error lines are currently displayed in the file.
 
 ```
@@ -79,9 +105,10 @@ Cycle through the error lines from top to bottom. Jump back to the first one fro
 ```
 :PrevSignCycle
 ```
-Cycle through the error lines from bottom to top. Jump back to the last one from the first one.
+Cycle through the error lines from bottom to top. Jump back to the last one from the first one
 
 # Status line
+
 The plugin's status can be displayed on the status bar.<br>
 The `viminette#getNormStatus()` function call returns the status of the norm highlighting.<br>
 
