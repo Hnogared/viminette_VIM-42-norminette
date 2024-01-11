@@ -7,4 +7,5 @@ nmap <C-n> :NextSign<CR>
 " Normal mode map <CTRL-b> to jump to the previous error line.
 nmap <C-b> :PrevSign<CR>
 
-nmap <>
+" Normal mode map <CTRL-k> to display the error lines jump menu.
+nmap <C-k> :NormErrorMenu<CR>
