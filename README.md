@@ -4,6 +4,7 @@ No need to switch away from VIM to check your file norm anymore !
 
 ![viminette_screenshot](./srcs/viminette_screensh.png)
 
+![viminette_menu_screenshot](./srcs/viminette_menu_screensh.png)
 
 # Installation
 
