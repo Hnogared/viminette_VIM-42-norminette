@@ -57,7 +57,7 @@ You are now good to go ! :+1:
 :Norminette
 ```
 Turn on norm highlighting if the shell norminette command call was successfull.<br>
-The highlighting now refreshes after each file save (VIM's `BufWritePos` event) until turned off or an error occurs.
+The highlighting now refreshes after each file save (VIM's `BufWritePost` event) until turned off or an error occurs.
 
 ---
 ```
