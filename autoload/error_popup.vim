@@ -1,9 +1,11 @@
 " Function to update the error popup if the cursor is at the same line of one
 "  of the placed error signs stored inside 'b:placed_signs_ids'
+" Hide the error popup if 'b:normstatus' is not equal to 2 or no signs are
+" placed
 "
 " Called at the 'CursorMoved,CursorMovedI' events (see ../plugin/autocmds.vim)
 function! error_popup#update() abort
-	if b:placed_signs_ids == []
+	if b:normstatus != 2 || b:placed_signs_ids == []
 		call popup_hide(b:error_popup_id)
 		return
 	endif
