@@ -4,14 +4,14 @@ A VIM plugin to display 42 norm errors directly in the VIM editor.
 No need to switch away from VIM to check your fil norm anymore !
 
 ==============================================================================
-CONTENTS                                                    *ViminetteContents*
+CONTENTS						*ViminetteContents*
 
 	1. Usage ............... |ViminetteUsage|
 	2. Mappings ............ |ViminetteMappings|
 	3. Variables ........... |ViminetteVariables|
 
 ==============================================================================
-1. Usage                                                       *ViminetteUsage*
+1. Usage						*ViminetteUsage*
 
 The plugin adds several commands for enabling/disabling norm highlighting and
 navigating through the errors.
@@ -47,16 +47,56 @@ NAVIGATING ERROR LINES					*error-lines-jump*
 		select an error line to jump to.
 		The popup won't show up if 'normstatus' is not equal to 2.
 
-:
+							*:NextSign*
+:NextS[ign]	Jump to the closest error line in the file after the cursor
+		line. Jump to the first one if none is present after the
+		cursor.
+		Don't jump if 'normstatus' is not equal to 2.
+
+							*:PrevSign*
+:Pr[evSign]	Jump to the closest error line in the file before the cursor
+		line. Jump to the last one if none is present before the
+		cursor.
+		Don't jump if 'normstatus' is not equal to 2.
+
+							*:NextSignCycle*
+:NextSignC[ycle]
+		Cycle through the error lines from top to bottom. Jump back to
+		the firt one from the last one.
+		Don't jump if 'normstatus' is not equal to 2.
+
+							*:PrevSignCycle*
+:PrevSignC[ycle]
+		Cycle through the error lines from bottom to top. Jump back to
+		the last one from the first one.
+		Don't jump if 'normstatus' is not equal to 2.
 
 ==============================================================================
-2. Mappings                                                 *ViminetteMappings*
+2. Mappings						*ViminetteMappings*
 
+The plugin also comes with some key mappings for faster norm toggling and
+navigation.
+
+							*CTRL-M*
+CTRL-M		Switch norm highlighting ON / OFF and update 'normstatus'.
+
+							*CTRL-K*
+CTRL-K		Open the norm error popup menu.
+
+							*CTRL-N*
+CTRL-N		Jump to the closest error line in the file after the cursor
+		line. Jump to the first one if none is present after the
+		cursor.
+
+							*CTRL-B*
+CTRL-B		Jump to the closest error line in the file before the cursor
+		line. Jump to the last one if none is present before the
+		cursor.
 
 ==============================================================================
-3. Variables                                               *ViminetteVariables*
+3. Variables						*ViminetteVariables*
 
-								*normstatus*
+							*normstatus*
 'normstatus'	number (default 0)
 		local to buffer
 	Stores the norm highlighting status of its buffer.
