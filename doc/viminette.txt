@@ -1,2 +1,65 @@
 *viminette.txt*	VIM integrated 42 norm highlighter
 
+A VIM plugin to display 42 norm errors directly in the VIM editor.
+No need to switch away from VIM to check your fil norm anymore !
+
+==============================================================================
+CONTENTS                                                    *ViminetteContents*
+
+	1. Usage ............... |ViminetteUsage|
+	2. Mappings ............ |ViminetteMappings|
+	3. Variables ........... |ViminetteVariables|
+
+==============================================================================
+1. Usage                                                       *ViminetteUsage*
+
+The plugin adds several commands for enabling/disabling norm highlighting and
+navigating through the errors.
+
+
+ENABLING NORM HIGHLIGHTING				*norm-enable*
+
+							*:Norminette*
+:Normi[nette] [options]
+		Run the system norminette and enable 42 norm highlighting.
+		Highlighting now refreshes by calling the norminette again
+		after each file save (see |BufWritePost|) until turned off or
+		an error occurs.
+		After a refresh, the current buffer's 'normstatus' variable
+		is set.
+		Run the norminette with [options] if set, e.g. for using the
+		-RCheckDefine flag.
+
+DISABLING NORM HIGHLIGHTING				*norm-disable*
+
+							*:NoNorminette*
+:NoN[orminette]
+		Disable norm highlighting and stop calling the norminette at
+		each file save.
+		The current buffer's 'normstatus' variable is set to 0.
+
+
+NAVIGATING ERROR LINES					*error-lines-jump*
+
+							*:NormErrorMenu*
+:NormE[rrorMenu]
+		Open a popup menu at the center of the window for the user to
+		select an error line to jump to.
+		The popup won't show up if 'normstatus' is not equal to 2.
+
+:
+
+==============================================================================
+2. Mappings                                                 *ViminetteMappings*
+
+
+==============================================================================
+3. Variables                                               *ViminetteVariables*
+
+								*normstatus*
+'normstatus'	number (default 0)
+		local to buffer
+	Stores the norm highlighting status of its buffer.
+	- 0 : norm highlighting is turned OFF
+	- 1 : norm highlighting is turned ON and there are no norm errors
+	- 2 : norm highlighting is turned ON and there are norm errors
