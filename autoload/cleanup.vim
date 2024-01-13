@@ -1,3 +1,9 @@
+" File              : cleanup.vim
+" Author            : Hnogared <133124217+Hnogared@users.noreply.github.com>
+" Date              : 14.01.2024
+" Last Modified Date: 14.01.2024
+" Last Modified By  : Hnogared <133124217+Hnogared@users.noreply.github.com>
+
 " Function to undefine all the signs prototyped inside the dictionary
 "  'g:signs_dict' (see ../plugin/norvimette.vim)
 function! cleanup#undefineSigns() abort

@@ -1,3 +1,9 @@
+" File              : sign_jump.vim
+" Author            : Hnogared <133124217+Hnogared@users.noreply.github.com>
+" Date              : 14.01.2024
+" Last Modified Date: 14.01.2024
+" Last Modified By  : Hnogared <133124217+Hnogared@users.noreply.github.com>
+
 " Function to jump to the closest error sign placed before the cursor line
 " No jump execution if no signs are placed
 " Jump to the last sign of the buffer if no sign is placed before the cursor

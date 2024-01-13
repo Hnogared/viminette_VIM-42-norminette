@@ -1,3 +1,9 @@
+" File              : init.vim
+" Author            : Hnogared <133124217+Hnogared@users.noreply.github.com>
+" Date              : 14.01.2024
+" Last Modified Date: 14.01.2024
+" Last Modified By  : Hnogared <133124217+Hnogared@users.noreply.github.com>
+
 " Function to declare and initialize the buffer local variables
 "
 " Called at the 'Filetype,BufEnter,BufNew,BufReadPre' events

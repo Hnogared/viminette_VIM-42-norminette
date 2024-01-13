@@ -1,3 +1,9 @@
+" File              : viminette.vim
+" Author            : Hnogared <133124217+Hnogared@users.noreply.github.com>
+" Date              : 14.01.2024
+" Last Modified Date: 14.01.2024
+" Last Modified By  : Hnogared <133124217+Hnogared@users.noreply.github.com>
+
 " Avoid loading the plugin more than once
 " The function exists('x') only returns true if the variable x has already been
 "  declared and initialized.

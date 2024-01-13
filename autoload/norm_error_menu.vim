@@ -1,3 +1,9 @@
+" File              : norm_error_menu.vim
+" Author            : Hnogared <133124217+Hnogared@users.noreply.github.com>
+" Date              : 14.01.2024
+" Last Modified Date: 14.01.2024
+" Last Modified By  : Hnogared <133124217+Hnogared@users.noreply.github.com>
+
 " Function to interpret the error popup menu result and jump to the chosen
 " error line.
 "

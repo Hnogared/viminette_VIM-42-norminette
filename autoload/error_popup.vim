@@ -1,3 +1,9 @@
+" File              : error_popup.vim
+" Author            : Hnogared <133124217+Hnogared@users.noreply.github.com>
+" Date              : 14.01.2024
+" Last Modified Date: 14.01.2024
+" Last Modified By  : Hnogared <133124217+Hnogared@users.noreply.github.com>
+
 " Function to update the error popup if the cursor is at the same line of one
 "  of the placed error signs stored inside 'b:placed_signs_ids'
 "

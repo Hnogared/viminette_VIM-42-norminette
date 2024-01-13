@@ -1,3 +1,9 @@
+" File              : highlights.vim
+" Author            : Hnogared <133124217+Hnogared@users.noreply.github.com>
+" Date              : 14.01.2024
+" Last Modified Date: 14.01.2024
+" Last Modified By  : Hnogared <133124217+Hnogared@users.noreply.github.com>
+
 " Highlight for the <filename> OK message if a file is normed
 hi OkMsg			ctermfg=Green guifg=Green
 

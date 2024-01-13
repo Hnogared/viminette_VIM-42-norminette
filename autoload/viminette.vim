@@ -1,3 +1,9 @@
+" File              : viminette.vim
+" Author            : Hnogared <133124217+Hnogared@users.noreply.github.com>
+" Date              : 14.01.2024
+" Last Modified Date: 14.01.2024
+" Last Modified By  : Hnogared <133124217+Hnogared@users.noreply.github.com>
+
 " Function to enable the norm errors highlighting on the current buffer
 " The optional argument for the norminette shell command is stored inside the
 "  'b:norm_option' variablle
