@@ -5,13 +5,13 @@
 " Last Modified By  : Hnogared <133124217+Hnogared@users.noreply.github.com>
 
 " Function to jump to the closest error sign placed before the cursor line
-" No jump execution if no signs are placed
+" No jump execution if 'b:normstatus' is not equal 2 or no signs are placed
 " Jump to the last sign of the buffer if no sign is placed before the cursor
 "  line and display an error message
 "
 " Called by the ':PrevSign' command (see ../plugin/commands.vim)
 function! sign_jump#prevSignJump() abort
-	if b:placed_signs_ids == []
+	if b:normstatus != 2 || b:placed_signs_ids == []
 		return
 	endif
 	let l:cursor_line = line('.')
@@ -36,13 +36,13 @@ function! sign_jump#prevSignJump() abort
 endfunction
 
 " Function to jump to the closest error sign placed after the cursor line
-" No jump execution if no signs are placed
+" No jump execution if 'b:normstatus' is not equal 2 or no signs are placed
 " Jump to the first sign of the buffer if no sign is placed after the cursor
 "  line and display an error message
 "
 " Called by the ':NextSign' command (see ../plugin/commands.vim)
 function! sign_jump#nextSignJump() abort
-	if b:placed_signs_ids == []
+	if b:normstatus != 2 || b:placed_signs_ids == []
 		return
 	endif
 	let l:cursor_line = line('.')
@@ -67,11 +67,11 @@ function! sign_jump#nextSignJump() abort
 endfunction
 
 " Function to jump to the sign id before the one inside 'b:curr_cycle_jump_id'
-" No jump execution if no signs are placed
+" No jump execution if 'b:normstatus' is not equal 2 or no signs are placed
 " Decrement the variable 'b:curr_cycle_jump_id' before each jump, if it
 "  reaches -1, reset it to the last sign id and echo an error message
 function! sign_jump#prevSignCycleJump() abort
-	if b:placed_signs_ids == []
+	if b:normstatus != 2 || b:placed_signs_ids == []
 		return
 	endif
 	let b:curr_cycle_jump_id -= 1
@@ -85,12 +85,12 @@ function! sign_jump#prevSignCycleJump() abort
 endfunction
 
 " Function to jump to the sign id after the one inside 'b:curr_cycle_jump_id'
-" No jump execution if no signs are placed
+" No jump execution if 'b:normstatus' is not equal 2 or no signs are placed
 " Increment the variable 'b:curr_cycle_jump_id' before each jump, if it
 "  exceeds the signs count, reset it to the first sign id and echo an error
 "  message
 function! sign_jump#nextSignCycleJump() abort
-	if b:placed_signs_ids == []
+	if b:normstatus != 2 || b:placed_signs_ids == []
 		return
 	endif
 	let b:curr_cycle_jump_id += 1

@@ -15,12 +15,12 @@ endfunction
 
 " Function to display a popup menu that asks the user to which error line they
 " want to jump to.
-" The popup won't show up if norm highlighting is disabled or the file doesn't
-" contain any norm errors.
+" The popup won't show up if 'b:normstatus' is not equal to 2 or the file
+"  doesn't contain any norm errors.
 "
 " Called by the ':NormErrorMenu' command
 function! norm_error_menu#display() abort
-	if b:placed_signs_ids == []
+	if b:normstatus != 2 || b:placed_signs_ids == []
 		return
 	endif
 	let l:errors_list = []

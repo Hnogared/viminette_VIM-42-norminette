@@ -9,8 +9,8 @@
 " Called at the 'Filetype,BufEnter,BufNew,BufReadPre' events
 "  (see ../plugin/autocmds.vim)
 function! init#declareBufferVariables() abort
-	if !exists('b:norm_status')
-		let b:norm_status = 0
+	if !exists('b:normstatus')
+		let b:normstatus = 0
 	endif
 	if !exists('b:norm_option')
 		let b:norm_option = ''
