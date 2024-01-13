@@ -54,7 +54,7 @@ endfunction
 "
 " Called by the ':NoNorminette' command (see ../plugin/commands.vim)
 function! viminette#highlightDisable() abort
-	if b:norm_status == 0
+	if b:normstatus == 0
 		return
 	endif
 	call cleanup#unplaceSigns()
