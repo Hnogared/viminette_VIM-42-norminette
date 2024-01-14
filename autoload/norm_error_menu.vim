@@ -31,6 +31,7 @@ function! norm_error_menu#display() abort
 	call popup_menu(l:errors_list, #{
 			\ line: 'cursor+1',
 			\ col: 'cursor',
+			\ title: '[ Error line selection ]',
 			\ callback: 'HandleChoice',
 			\ highlight: 'PopupMenu',
 			\ })
