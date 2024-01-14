@@ -1,78 +1,146 @@
 *viminette.txt*	VIM integrated 42 norm highlighter
 
-A VIM plugin to display 42 norm errors directly in the VIM editor.
-No need to switch away from VIM to check your fil norm anymore !
+*viminette*	v1.0.0
+Author:		Hnogared <133124217+Hnogared@users.noreply.github.com>
+
+A VIM plugin to highlight 42 norm error lines directly in the VIM editor.
+No need to switch away from VIM to check your file norm anymore !
 
 ==============================================================================
-CONTENTS						*ViminetteContents*
+CONTENTS						*viminette-contents*
 
-	1. Usage ............... |ViminetteUsage|
-	2. Mappings ............ |ViminetteMappings|
-	3. Variables ........... |ViminetteVariables|
+	1. Introduction		|viminette-intro|
+				|viminette-error-line|
+				|viminette-error-col|
+				|viminette-error-popup|
+	2. Usage		|viminette-usage|
+				|viminette-enable|
+				|viminette-disable|
+				|viminette-navigate|
+	3. Mappings		|viminette-mappings|
+	4. Variables		|viminette-variables|
+	5. License		|viminette-license|
+	6. Contribute		|viminette-contribute|
 
 ==============================================================================
-1. Usage						*ViminetteUsage*
+1. Introduction						*viminette-intro*
+
+The viminette is a simple plugin to highlight directly on your VIM editor the
+lines containing 42 norm errors on a valid C source/header file.
+
+The viminette does not check the norm by itself !
+It runs the `norminette` shell command and parses the result for highlighting,
+so make sure to have the official norminette correctly installed on your
+system. You can get it at `https://github.com/42School/norminette`.
+
+Once norm highlighting is enabled on a buffer, lines with norm errors are
+highlighted if present, see |viminette-error-line|.
+
+When the cursor is moved onto an error line, a popup displays the associated
+error on top of it, see |viminette-error-popup|.
+
+Enabled norm highlighting refreshes at each save (VIMdoc |BufWritePost|).
+Disabled norm highlighting doesn't refresh until turned back on.
+
+Don't hesitate to share the plugin with your friends, we all need to make the
+norminette less painful to deal with ;)
+
+
+ERROR LINES HIGHLIGHT					*viminette-error-line*
+
+An error line has been parsed from the `norminette` system command call and
+represents a line in which a norm error is present.
+It is signified by a VIM sign placed at its beginning (VIMdoc |signs|) and
+the whole line being highlighted with the 'ErrorSignLine' highlight.
+
+Example :
+	`s>	int  main(...`
+
+
+ERROR POPUP			*viminette-error-col* *viminette-error-popup*
+
+When the cursor is moved onto an error line and norm highlighting is enabled,
+a popup (VIMdoc |popup|) on top of it displays the line's associated norm
+error.
+
+On the left part of the popup, a string displays on which column the error can
+be found relative to the cursor column.
+It can be formatted as follows:
+	- `<0>` The error starts at the same column as the cursor
+	- `<<N` The error starts `N` columns before the cursor
+	- `N>>` The error starts `N` columns after the cursor
+
+On the right part of the popup, a string dispays the line's error.
+
+Example:
+	`[ <<2 | found space when expecting tab ]`
+
+==============================================================================
+2. Usage						*viminette-usage*
 
 The plugin adds several commands for enabling/disabling norm highlighting and
-navigating through the errors.
+navigating through the error lines.
 
 
-ENABLING NORM HIGHLIGHTING				*norm-enable*
+ENABLING NORM HIGHLIGHTING				*viminette-enable*
 
 							*:Norminette*
 :Normi[nette] [options]
 		Run the system norminette and enable 42 norm highlighting.
 		Highlighting now refreshes by calling the norminette again
-		after each file save (see |BufWritePost|) until turned off or
-		an error occurs.
-		After a refresh, the current buffer's 'normstatus' variable
-		is set.
+		after each file save until turned off or an error occurs.
 		Run the norminette with [options] if set, e.g. for using the
 		-RCheckDefine flag.
+		After a refresh, the current buffer's 'normstatus' variable
+		is set depending on the norm result.
 
-DISABLING NORM HIGHLIGHTING				*norm-disable*
+
+DISABLING NORM HIGHLIGHTING				*viminette-disable*
 
 							*:NoNorminette*
 :NoN[orminette]
-		Disable norm highlighting and stop calling the norminette at
-		each file save.
+		Disable norm highlighting by hiding the error lines and the
+		error popup and stop calling the norminette at each file save,
+		see |viminette-error-line| |viminette-error-popup|.
 		The current buffer's 'normstatus' variable is set to 0.
 
 
-NAVIGATING ERROR LINES					*error-lines-jump*
+NAVIGATING ERROR LINES					*viminette-navigate*
 
 							*:NormErrorMenu*
 :NormE[rrorMenu]
 		Open a popup menu at the center of the window for the user to
-		select an error line to jump to.
+		select an error line to jump to, see |viminette-error-line|.
 		The popup won't show up if 'normstatus' is not equal to 2.
 
 							*:NextSign*
 :NextS[ign]	Jump to the closest error line in the file after the cursor
-		line. Jump to the first one if none is present after the
-		cursor.
+		line, see |viminette-error-line|. Jump to the first one if
+		none is present after the cursor.
 		Don't jump if 'normstatus' is not equal to 2.
 
 							*:PrevSign*
 :Pr[evSign]	Jump to the closest error line in the file before the cursor
-		line. Jump to the last one if none is present before the
-		cursor.
+		line, see |viminette-error-line|. Jump to the last one if none
+		is present before the cursor.
 		Don't jump if 'normstatus' is not equal to 2.
 
 							*:NextSignCycle*
 :NextSignC[ycle]
-		Cycle through the error lines from top to bottom. Jump back to
-		the firt one from the last one.
+		Cycle through the error lines from top to bottom, see
+		|viminette-error-line|. Jump back to the firt one from the
+		last one.
 		Don't jump if 'normstatus' is not equal to 2.
 
 							*:PrevSignCycle*
 :PrevSignC[ycle]
-		Cycle through the error lines from bottom to top. Jump back to
-		the last one from the first one.
+		Cycle through the error lines from bottom to top, see
+		|viminette-error-line|. Jump back to the last one from the
+		first one.
 		Don't jump if 'normstatus' is not equal to 2.
 
 ==============================================================================
-2. Mappings						*ViminetteMappings*
+3. Mappings						*viminette-mappings*
 
 The plugin also comes with some key mappings for faster norm toggling and
 navigation.
@@ -85,21 +153,44 @@ CTRL-K		Open the norm error popup menu.
 
 							*CTRL-N*
 CTRL-N		Jump to the closest error line in the file after the cursor
-		line. Jump to the first one if none is present after the
-		cursor.
+		line, see |viminette-error-line|. Jump to the first one if
+		none is present after the cursor.
 
 							*CTRL-B*
 CTRL-B		Jump to the closest error line in the file before the cursor
-		line. Jump to the last one if none is present before the
-		cursor.
+		line, see |viminette-error-line|. Jump to the last one if none
+		is present before the cursor.
 
 ==============================================================================
-3. Variables						*ViminetteVariables*
+4. Variables						*viminette-variables*
 
 							*normstatus*
 'normstatus'	number (default 0)
 		local to buffer
 	Stores the norm highlighting status of its buffer.
-	- 0 : norm highlighting is turned OFF
-	- 1 : norm highlighting is turned ON and there are no norm errors
-	- 2 : norm highlighting is turned ON and there are norm errors
+	- `0` : norm highlighting is turned `OFF`
+	- `1` : norm highlighting is turned `ON without norm errors`
+	- `2` : norm highlighting is turned `ON with norm errors`
+
+==============================================================================
+5. License						*viminette-license*
+
+MIT license
+Copyright (c) 2024, Hnogared
+
+Complete license inside the plugin repository at LICENSE.txt or at
+`https://github.com/Hnogared/viminette_VIM-42-norminette/blob/main/LICENSE.txt`
+
+==============================================================================
+6. Contribute						*viminette-contribute*
+
+All contributions to the project are welcome !
+
+Open a pull request on the project's github page at
+	`https://github.com/Hnogared/viminette_VIM-42-norminette/pulls`
+	Pull request help at `https://docs.github.com/en/pull-requests`
+
+Report an issue on the project's github page at
+	`https://github.com/Hnogared/viminette_VIM-42-norminette/issues`
+
+==============================================================================
