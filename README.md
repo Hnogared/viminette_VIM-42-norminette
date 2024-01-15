@@ -159,7 +159,7 @@ set statusline=%!MyStatusLine()
 ```
  
 ![norm status line](./srcs/norm_status_line.gif)
-<sup>What an implementation from above could look like on a VIM status line (the colored rectangle shows the norm status)</sup>
+<sup>What an implementation from above could look like on a VIM status line (the colored rectangle shows the norm status the other stuff is only for display purposes)</sup>
 
 # Special thanks
 
