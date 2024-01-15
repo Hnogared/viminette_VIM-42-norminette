@@ -37,6 +37,9 @@ You are now good to go ! :+1:
 
 # Usage
 
+> [!TIP]
+> For more detailed informations on how to use the plugin functionalities, you can run `:help viminette` in your VIM editor to open the documentation.
+
 ## 1. Key maps
 
 ### Enabling/disabling norm highlighting
