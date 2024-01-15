@@ -21,5 +21,5 @@ augroup norvimette
 	autocmd CursorMoved,CursorMovedI * call error_popup#update()
 
 	" Hide a buffer's error popup if it is not shown on a window anymore
-	autocmd BufWinLeave * call popup_hide(b:error_popup_id) 
+	autocmd BufLeave * call popup_hide(b:error_popup_id) 
 augroup END
